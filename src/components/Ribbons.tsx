@@ -183,6 +183,8 @@ const activeWidth = (r: RibbonConfig, scrollY: number, refScrollY: number, viewp
   return Math.max(0, Math.min(grown, max))
 }
 
+type RibbonEls = { trunk: HTMLDivElement; branch?: HTMLDivElement }
+
 const applyWidth = (
   r: RibbonConfig,
   totalWidth: number,
@@ -235,7 +237,6 @@ const clipFor = (slopePct: number, tipSide: "top" | "bottom"): string => {
 }
 
 export default function Ribbons() {
-  type RibbonEls = { trunk: HTMLDivElement; branch?: HTMLDivElement }
   const elsRef = useRef<Map<string, RibbonEls>>(new Map())
   const statesRef = useRef<Map<string, RibbonState>>(new Map())
   const scrollRefsRef = useRef<Map<string, number>>(new Map())
