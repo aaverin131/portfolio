@@ -14,7 +14,7 @@ export const projects: Project[] = [
   {
     slug: "resume-refiner",
     title: "Resume Refiner",
-    blurb: "AI-powered resume optimizer. Hackathon top 10/44 — I led the Flask + Gemini backend.",
+    blurb: "AI-powered resume optimizer. Hackathon top 10/44 — Led the Flask + Gemini backend.",
     tech: ["Python", "Flask", "React", "Gemini API"],
     poster: "/media/resume-refiner.png",
     video: "/media/resume-refiner.webm",
