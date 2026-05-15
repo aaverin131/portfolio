@@ -1,6 +1,7 @@
 import { useEffect, useState, type MouseEvent } from "react"
 
 const LINKS = [
+  { href: "#hero",    label: "top"    },
   { href: "#about",    label: "about"    },
   { href: "#projects", label: "projects" },
   { href: "#skills",   label: "skills"   },

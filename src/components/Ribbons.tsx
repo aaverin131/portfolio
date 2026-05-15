@@ -68,10 +68,10 @@ const MOBILE_BREAKPOINT = 768
 const GROUPS: GroupConfig[] = [
   {
     id: "bottom-1",
-    anchorX: 1,
+    anchorX: 1.1,
     anchorY: 500,
     angle: 158,
-    growthRate: 1.4,
+    growthRate: 1.8,
     maxLength: 4000,
   },
   {
@@ -79,7 +79,25 @@ const GROUPS: GroupConfig[] = [
     anchorX: -0.3,
     anchorY: 1350,
     angle: 22,
-    growthRate: 1.4,
+    growthRate: 1.7,
+    maxLength: 4000,
+  },
+  {
+    id: "bottom-3",
+    anchorX: 1.1,
+    anchorY: 2500,
+    angle: 158,
+    triggerOffset: 300,
+    growthRate: 2.0,
+    maxLength: 4000,
+  },
+  {
+    id: "bottom-4",
+    anchorX: -0.3,
+    anchorY: 3350,
+    angle: 22,
+    triggerOffset: 450,
+    growthRate: 4.0,
     maxLength: 4000,
   },
   {
@@ -89,7 +107,7 @@ const GROUPS: GroupConfig[] = [
     angle: 170,
     triggerOffset: -200,   // near-horizontal — activate earlier so it doesn't snap in
     growthRate: 50,        // old config was static; ramps to cap almost instantly
-    maxLength: 1800,
+    maxLength: 3000,
   },
   {
     id: "middle-2",
@@ -104,8 +122,18 @@ const GROUPS: GroupConfig[] = [
     anchorX: 1.1,
     anchorY: 1700,
     angle: 150,
-    growthRate: 0.25,
-    maxLength: 400,
+    triggerOffset: 100,
+    growthRate: 1.6,
+    maxLength: 2800,
+  },
+  {
+    id: "middle-4",
+    anchorX: 0,
+    anchorY: 2900,
+    angle: 30,
+    triggerOffset: 300,
+    growthRate: 1.6,
+    maxLength: 2800,
   },
   {
     id: "top-1",
@@ -113,7 +141,7 @@ const GROUPS: GroupConfig[] = [
     anchorY: -110,
     angle: 30,
     growthRate: 9,
-    maxLength: 1800,
+    maxLength: 3000,
   },
   {
     id: "top-2",
@@ -132,7 +160,7 @@ const GROUPS: GroupConfig[] = [
     angle: 0,
     triggerOffset: -300,   // fully horizontal — strongest early trigger
     growthRate: 3.6,
-    maxLength: 18000,
+    maxLength: 4000,
   },
 ]
 
@@ -148,6 +176,19 @@ const RIBBONS: RibbonConfig[] = [
   { id: "r7b", groupId: "bottom-2", xOffset: 0, yOffset: 42 - 10,  thickness: 17, color: "var(--ribbon-bottom-middle)", opacity: 0.7, tipSide: "top", slopePct: 0, lengthScale: 1.1 },
   { id: "r7c", groupId: "bottom-2", xOffset: 0, yOffset: 84 - 20,  thickness: 17, color: "var(--ribbon-bottom-bottom)", opacity: 0.7, tipSide: "top", slopePct: 0, lengthScale: 1 },
 
+  { id: "r9a", groupId: "bottom-3", xOffset: 0, yOffset: 0,        thickness: 17, color: "var(--ribbon-bottom-top)",    opacity: 0.7, tipSide: "top", slopePct: 0, lengthScale: 1.2 },
+  { id: "r9b", groupId: "bottom-3", xOffset: 0, yOffset: 42 - 10,  thickness: 17, color: "var(--ribbon-bottom-middle)", opacity: 0.7, tipSide: "top", slopePct: 0, lengthScale: 1.1 },
+  { id: "r9c", groupId: "bottom-3", xOffset: 0, yOffset: 84 - 20,  thickness: 17, color: "var(--ribbon-bottom-bottom)", opacity: 0.7, tipSide: "top", slopePct: 0, lengthScale: 1 },
+
+  { id: "r10a", groupId: "bottom-4", xOffset: 0, yOffset: 0,        thickness: 17, color: "var(--ribbon-bottom-top)",    opacity: 0.7, tipSide: "top", slopePct: 0, lengthScale: 1.2 },
+  { id: "r10b", groupId: "bottom-4", xOffset: 0, yOffset: 42 - 10,  thickness: 17, color: "var(--ribbon-bottom-middle)", opacity: 0.7, tipSide: "top", slopePct: 0, lengthScale: 1.1 },
+  { id: "r10c", groupId: "bottom-4", xOffset: 0, yOffset: 84 - 20,  thickness: 17, color: "var(--ribbon-bottom-bottom)", opacity: 0.7, tipSide: "top", slopePct: 0, lengthScale: 1 },
+
+
+  { id: "r11a", groupId: "middle-4", xOffset: 0, yOffset: 0,        thickness: 21, color: "var(--ribbon-middle-top)",    opacity: 1, tipSide: "top", slopePct: 0, lengthScale: 1.2 },
+  { id: "r11b", groupId: "middle-4", xOffset: 0, yOffset: 42,       thickness: 21, color: "var(--ribbon-middle-middle)", opacity: 1, tipSide: "top", slopePct: 0, lengthScale: 1.1 },
+  { id: "r11c", groupId: "middle-4", xOffset: 0, yOffset: 84 - 6,   thickness: 21, color: "var(--ribbon-middle-bottom)", opacity: 1, tipSide: "top", slopePct: 0, lengthScale: 1 },
+  
   { id: "r8a", groupId: "middle-3", xOffset: 0, yOffset: 0,        thickness: 21, color: "var(--ribbon-middle-top)",    opacity: 1, tipSide: "top", slopePct: 0, lengthScale: 1.2 },
   { id: "r8b", groupId: "middle-3", xOffset: 0, yOffset: 42,       thickness: 21, color: "var(--ribbon-middle-middle)", opacity: 1, tipSide: "top", slopePct: 0, lengthScale: 1.1 },
   { id: "r8c", groupId: "middle-3", xOffset: 0, yOffset: 84 - 6,   thickness: 21, color: "var(--ribbon-middle-bottom)", opacity: 1, tipSide: "top", slopePct: 0, lengthScale: 1 },
