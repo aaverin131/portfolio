@@ -1,12 +1,4 @@
-import { useEffect, useRef, useState, type MouseEvent } from "react"
-
-// True if the OS reports a light color scheme. Falls back to light if the
-// browser doesn't support the media query.
-const prefersLight = () =>
-  typeof window !== "undefined" &&
-  typeof window.matchMedia === "function"
-    ? !window.matchMedia("(prefers-color-scheme: dark)").matches
-    : true
+import { useEffect, useState, type MouseEvent } from "react"
 
 const LINKS = [
   { href: "#about",    label: "about"    },
@@ -18,30 +10,18 @@ const LINKS = [
 // Fraction of viewport height the user must scroll past before the nav opens.
 const OPEN_THRESHOLD = 0.8
 
-const ICON_ON  = "/src/assets/UI/light-bulb-on-svgrepo-com.svg"
-const ICON_OFF = "/src/assets/UI/light-bulb-off-svgrepo-com.svg"
+const ICON_ON  = "/UI/light-bulb-on-svgrepo-com.svg"
+const ICON_OFF = "/UI/light-bulb-off-svgrepo-com.svg"
 
 export default function Nav() {
   const [open, setOpen]       = useState(true)
-  // Initial bulb state mirrors the OS color scheme: light system → bulb on.
-  const [themeOn, setThemeOn] = useState(prefersLight)
-  // Once the user manually clicks the bulb, stop following the OS.
-  const userOverrodeRef = useRef(false)
+  // Always start dark (bulb off), regardless of OS preference.
+  const [themeOn, setThemeOn] = useState(false)
 
   useEffect(() => {
     // Bulb OFF = dark theme. Flip a class on <html> so global CSS can react.
     document.documentElement.classList.toggle("theme-dark", !themeOn)
   }, [themeOn])
-
-  useEffect(() => {
-    // Track the OS preference live — until the user clicks the bulb.
-    const mq = window.matchMedia("(prefers-color-scheme: dark)")
-    const handler = (e: MediaQueryListEvent) => {
-      if (!userOverrodeRef.current) setThemeOn(!e.matches)
-    }
-    mq.addEventListener("change", handler)
-    return () => mq.removeEventListener("change", handler)
-  }, [])
 
   useEffect(() => {
     // No localStorage on purpose — resets on reload.
@@ -92,10 +72,7 @@ export default function Nav() {
             className={`side-nav-theme${themeOn ? " is-on" : ""}`}
             aria-label="Switch theme"
             aria-pressed={themeOn}
-            onClick={() => {
-              userOverrodeRef.current = true
-              setThemeOn((v) => !v)
-            }}
+            onClick={() => setThemeOn((v) => !v)}
           >
             <img
               className="side-nav-theme-icon"

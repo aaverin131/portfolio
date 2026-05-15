@@ -5,9 +5,10 @@ export type Project = {
   blurb: string
   tech: string[]
   poster: string   // path to static image
-  video: string    // path to hover video
+  video?: string   // optional hover video
   repo?: string
   live?: string
+  devpost?: string // shows a "demo on Devpost" overlay + link in place of hover video
 }
 
 export const projects: Project[] = [
@@ -16,26 +17,26 @@ export const projects: Project[] = [
     title: "Resume Refiner",
     blurb: "AI-powered resume optimizer. Hackathon top 10/44 — Led the Flask + Gemini backend.",
     tech: ["Python", "Flask", "React", "Gemini API", "Team of 4"],
-    poster: "/src/assets/media/Resume Refiner thumbnail.png",
-    video: "/src/assets/media/resume-refiner.webm",
+    poster: "/media/Resume Refiner thumbnail.png",
     repo: "https://github.com/GDSC-2025-Hackathon/Resume-Refiner",
+    devpost: "https://devpost.com/software/resume-refiner",
   },
   {
     slug: "number-string-converter",
     title: "Number ↔ String Converter",
     blurb: "Bidirectional integer/word converter with a modular OOP backend.",
     tech: ["Python", "Flask", "JavaScript"],
-    poster: "/src/assets/media/String Number converter thumbnail.png",
-    video: "/src/assets/media/String Number converter demo.webm",
+    poster: "/media/String Number converter thumbnail.png",
+    video: "/media/String Number converter demo.mp4",
     repo: "https://github.com/aaverin131/Number-String-Conversion",
   },
   {
     slug: "grand-theft-stickman",
     title: "Grand Theft Stickman",
-    blurb: "2D game engine in Pygame — custom vector physics, 120+ assets, runs smooth.",
+    blurb: "2D open game via Pygame engine — custom vector physics, custom 120+ assets, runs smooth.",
     tech: ["Python", "Pygame"],
-    poster: "/src/assets/media/GTS game thumbnail.png",
-    video: "/src/assets/media/GTS game clip.webm",
+    poster: "/media/GTS game thumbnail.png",
+    video: "/media/GTS game clip.mp4",
     repo: "https://github.com/aaverin131/Grand-Theft-Stickman",
   },
 ]

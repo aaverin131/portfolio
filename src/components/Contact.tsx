@@ -8,7 +8,7 @@ export default function Contact() {
         <ul className="contact-list">
           <li>
             <a href="mailto:alexanderaverin7@gmail.com" className="contact-item">
-              <img src="/gmail.svg"
+              <img src="/logos/gmail.svg"
                    alt="" className="contact-icon" />
               <span>alexanderaverin7@gmail.com</span>
             </a>
@@ -16,7 +16,7 @@ export default function Contact() {
           <li>
             <a href="https://www.linkedin.com/in/alexander-averin"
                target="_blank" rel="noreferrer" className="contact-item">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg"
+              <img src="/logos/linkedin.svg"
                    alt="" className="contact-icon" />
               <span>linkedin.com/in/alexander-averin</span>
             </a>
@@ -24,7 +24,7 @@ export default function Contact() {
           <li>
             <a href="https://github.com/aaverin131"
                target="_blank" rel="noreferrer" className="contact-item">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
+              <img src="/logos/github.svg"
                    alt="" className="contact-icon" />
               <span>github.com/aaverin131</span>
             </a>

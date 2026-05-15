@@ -277,7 +277,7 @@ html.theme-dark {
   display: flex;
   flex-direction: column;
 }
-.project-link { margin-top: auto; align-self: flex-start; font-family: var(--font-mono);}
+.project-link { font-family: var(--font-mono); }
 /* MEDIA stack: poster + video on top */
 .project-media {
   position: relative;
@@ -300,6 +300,45 @@ html.theme-dark {
 }
 .project-card:hover .project-video.is-ready {
   opacity: 1;
+}
+
+/* Devpost hover overlay — used when a project has no demo video */
+.project-devpost-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  text-decoration: none;
+  background: rgb(0 0 0 / 0.25);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  opacity: 0;
+  transition: opacity 250ms ease, backdrop-filter 250ms ease, background-color 250ms ease;
+}
+.project-card:hover .project-devpost-overlay {
+  opacity: 1;
+  background: rgb(0 0 0 / 0.4);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.project-devpost-overlay span {
+  padding: 0.5rem 0.875rem;
+  border: 1px solid rgb(255 255 255 / 0.4);
+  border-radius: 0.5rem;
+  background: rgb(0 0 0 / 0.35);
+}
+
+.project-links {
+  margin-top: auto;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }
 
 .project-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
