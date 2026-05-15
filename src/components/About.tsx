@@ -6,7 +6,7 @@ export default function About() {
       <Reveal>
         <h2 className="section-heading">About me</h2>
         <p className="section-body">
-          Sophomore Computer Science student @ the University of Guelph.
+          Second year Computer Science student @ the University of Guelph.
           Why CS? It opens up a range of things I love to do — apps,
           robotics, and making games.
         </p>

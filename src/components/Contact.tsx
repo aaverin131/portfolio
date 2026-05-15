@@ -4,11 +4,11 @@ export default function Contact() {
   return (
     <section id="contact" className="section">
       <Reveal>
-        <h2 className="section-heading">Contact me</h2>
+        <h2 className="section-heading">Contact & Links</h2>
         <ul className="contact-list">
           <li>
             <a href="mailto:alexanderaverin7@gmail.com" className="contact-item">
-              <img src="/src/assets/logos/gmail.svg"
+              <img src="/gmail.svg"
                    alt="" className="contact-icon" />
               <span>alexanderaverin7@gmail.com</span>
             </a>
