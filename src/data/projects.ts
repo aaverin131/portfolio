@@ -28,7 +28,7 @@ export const projects: Project[] = [
     tech: ["Python", "Flask", "JavaScript"],
     poster: "/media/String Number converter thumbnail.png",
     video: "/media/String Number converter demo.mp4",
-    repo: "https://github.com/aaverin131/Number-String-Conversion",
+    repo: "https://github.com/aaverin131/Python-Projects-Collection/tree/main/number-string-converter",
   },
   {
     slug: "grand-theft-stickman",
