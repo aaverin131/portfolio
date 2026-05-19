@@ -13,7 +13,7 @@ const SECTION_PAD = {
   about:    { top: "6rem", bottom: "4rem" },
   projects: { top: "0rem", bottom: "6rem" },
   skills:   { top: "9rem", bottom: "6rem" },
-  contact:  { top: "0rem", bottom: "0rem" },
+  contact:  { top: "0rem", bottom: "6rem" },
 } as const
 
 type Pad = { top: string; bottom: string }

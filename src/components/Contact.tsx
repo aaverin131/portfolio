@@ -30,6 +30,16 @@ export default function Contact() {
             </a>
           </li>
         </ul>
+
+        <a
+          href="/resume.pdf"
+          target="_blank"
+          rel="noreferrer"
+          className="resume-cta"
+        >
+          <span>View resume</span>
+          <span className="resume-cta-arrow" aria-hidden="true">→</span>
+        </a>
       </Reveal>
     </section>
   )

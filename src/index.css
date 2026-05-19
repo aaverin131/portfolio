@@ -430,6 +430,9 @@ html.theme-dark {
 }
 
 /* ---------- Contact ---------- */
+/* Contact is the last section — don't force a full viewport of empty space below it. */
+#contact.section { min-height: 70vh; }
+
 .contact-list {
   list-style: none;
   padding: 0;
@@ -438,6 +441,30 @@ html.theme-dark {
   flex-direction: column;
   gap: 1rem;
 }
+
+.resume-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-top: 2rem;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid currentColor;
+  border-radius: 9999px;
+  color: white;
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  transition: color 150ms ease, background 150ms ease;
+}
+.resume-cta:hover {
+  color: var(--color-text-lime);
+  background: rgba(255, 255, 255, 0.05);
+}
+.resume-cta-arrow {
+  display: inline-block;
+  transition: transform 150ms ease;
+}
+.resume-cta:hover .resume-cta-arrow { transform: translateX(3px); }
 .contact-item {
   display: inline-flex;
   align-items: center;
