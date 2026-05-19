@@ -32,7 +32,7 @@ export default function Contact() {
         </ul>
 
         <a
-          href="/resume.pdf"
+          href="/Resume.pdf"
           target="_blank"
           rel="noreferrer"
           className="resume-cta"
