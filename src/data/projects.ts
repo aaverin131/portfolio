@@ -33,8 +33,8 @@ export const projects: Project[] = [
   {
     slug: "grand-theft-stickman",
     title: "Grand Theft Stickman",
-    blurb: "2D open game via Pygame engine — custom vector physics, custom 120+ assets, runs smooth.",
-    tech: ["Python", "Pygame"],
+    blurb: "2D open-world game via Pygame engine — OOP architecture, 100+ custom assets, frame-rate-independent motion.",
+    tech: ["Python", "Pygame", "pytest", "GitHub Actions"],
     poster: "/media/GTS game thumbnail.png",
     video: "/media/GTS game clip.mp4",
     repo: "https://github.com/aaverin131/Grand-Theft-Stickman",
