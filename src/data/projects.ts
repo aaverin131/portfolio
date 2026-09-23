@@ -1,6 +1,6 @@
 // src/data/projects.ts
 export type Project = {
-  slug: string
+  slug: string     // also the page URL: /projects/<slug>
   title: string
   blurb: string
   tech: string[]
@@ -9,19 +9,49 @@ export type Project = {
   repo?: string
   live?: string
   devpost?: string // shows a "demo on Devpost" overlay + link in place of hover video
+  makerworld?: string
+  category: Category   // required: which filter it belongs to
+  featured?: boolean   // true = shows on the home grid
+  details?: { heading: string; text: string }[]   // extra sections on the project's own page
+}
+
+// Types disappear at runtime, so the categories live in a real array and the
+// type is derived from it — checking a ?category= value from the URL needs the array.
+export const CATEGORIES = ["software", "embed-modelling"] as const
+export type Category = (typeof CATEGORIES)[number]
+
+export const CATEGORY_LABELS: Record<Category, string> = {
+  software: "Software",
+  "embed-modelling": "Embedded + 3D",
+}
+
+// "?category=embed-modelling" → "embed-modelling". Missing or unknown values give
+// undefined (= all projects), so a mistyped link still shows everything.
+export function categoryFromSearch(search: string): Category | undefined {
+  const value = new URLSearchParams(search).get("category")
+  return CATEGORIES.find((c) => c === value)
+}
+
+// The reverse, for building links: undefined → "" (no filter).
+export function categoryQuery(category?: Category): string {
+  return category ? `?category=${category}` : ""
 }
 
 export const projects: Project[] = [
   {
+    category: "software",
+    featured: true,
     slug: "resume-refiner",
     title: "Resume Refiner",
-    blurb: "AI-powered resume optimizer. Hackathon top 10/44 — Led the Flask + Gemini backend.",
+    blurb: "AI-powered resume optimizer. Hackathon top 10/44 — Built the Flask + Gemini backend.",
     tech: ["Python", "Flask", "React", "Gemini API", "Team of 4"],
     poster: "/media/Resume Refiner thumbnail.png",
     repo: "https://github.com/GDSC-2025-Hackathon/Resume-Refiner",
     devpost: "https://devpost.com/software/resume-refiner",
   },
   {
+    category: "software",
+    featured: true,
     slug: "number-string-converter",
     title: "Number ↔ String Converter",
     blurb: "Bidirectional integer/word converter with a modular OOP backend.",
@@ -31,6 +61,8 @@ export const projects: Project[] = [
     repo: "https://github.com/aaverin131/Python-Projects-Collection/tree/main/number-string-converter",
   },
   {
+    category: "software",
+    featured: true,
     slug: "grand-theft-stickman",
     title: "Grand Theft Stickman",
     blurb: "2D open-world game via Pygame engine — OOP architecture, 100+ custom assets, frame-rate-independent motion.",
@@ -38,5 +70,22 @@ export const projects: Project[] = [
     poster: "/media/GTS game thumbnail.png",
     video: "/media/GTS game clip.mp4",
     repo: "https://github.com/aaverin131/Grand-Theft-Stickman",
+  },
+  {
+    category: "embed-modelling",
+    slug: "window-slider",
+    title: "Automatic Window Slider",
+    blurb: "Opens and closes a window from a TV remote. An ESP32 reads the IR signal and drives a NEMA 17 stepper; I modelled the parts in Fusion 360 and printed them. Next: Wi-Fi control.",
+    tech: ["ESP32", "NEMA 17", "IR", "Fusion 360", "3D Printing"],
+    poster: "/media/Window Slider thumbnail.jpg",
+    video: "/media/Window Slider demo.mp4",
+  },
+  {
+    category: "embed-modelling",
+    slug: "silver-robotics-logo",
+    title: "Silver Robotics Logo",
+    blurb: "My FRC team's logo (Team 9575) as a 3D print, with a CNC arm that moves the S up and down like it's building the letter. Modelled in Fusion 360.",
+    tech: ["Fusion 360", "3D Printing"],
+    poster: "/media/Silver Robotics logo.png",
   },
 ]

@@ -364,6 +364,34 @@ html.theme-dark {
   font-weight: 500;
 }
 
+/* "View more projects" — a small two-tone tile in the grid's empty 4th slot.
+   Grid items stretch to the row height by default; centring keeps it compact. */
+.project-more {
+  align-self: center;
+  justify-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 1rem 1.5rem;
+  background: var(--color-project-rect-top);
+  border: 0.5rem solid var(--color-project-rect-bottom);
+  border-radius: 1.25rem;
+  color: white;
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  transition: transform 200ms ease, color 150ms ease, background-color 350ms ease, border-color 350ms ease;
+}
+.project-more:hover {
+  transform: translateY(-4px);
+  color: var(--color-text-lime);
+}
+.project-more-arrow {
+  display: inline-block;
+  transition: transform 150ms ease;
+}
+.project-more:hover .project-more-arrow { transform: translateX(3px); }
+
 /* ---------- Skills ---------- */
 .skill-group { margin-top: 2.5rem; }
 .skill-group-title {
@@ -485,6 +513,72 @@ html.theme-dark {
 }
 
 
+
+/* ---------- Project pages (/projects, /projects/<slug>) ---------- */
+.page { --section-pad-top: 3rem; }
+
+.page-back {
+  display: inline-block;
+  margin-bottom: 2rem;
+  color: rgb(255 255 255 / 0.7);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+.page-back:hover { color: var(--color-text-lime); }
+
+/* Segmented filter: one pill, the pressed option filled lime. */
+.project-filter {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  border: 1px solid rgb(255 255 255 / 0.25);
+  border-radius: 1.5rem;
+}
+.project-filter-button {
+  padding: 0.45rem 0.8rem;
+  border: 0;
+  border-radius: 9999px;
+  background: transparent;
+  color: rgb(255 255 255 / 0.75);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: color 150ms ease, background-color 150ms ease;
+}
+.project-filter-button:hover { color: var(--color-text-lime); }
+.project-filter-button[aria-pressed="true"] {
+  background: var(--color-text-lime);
+  color: var(--color-deep);
+}
+
+.project-page-media {
+  aspect-ratio: 16 / 9;
+  max-width: 56rem;
+  margin: 1.5rem 0 2rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: var(--color-project-rect-bottom);
+}
+.project-page-media img,
+.project-page-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;          /* show the whole frame, whatever shape it was shot in */
+  display: block;
+}
+.page .project-links { margin-top: 1.5rem; }
+
+.project-detail { margin-top: 2.5rem; }
+.project-detail-heading {
+  color: var(--color-text-lime);
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
 
 /* ---------- Responsive (tablet+) ---------- */
 @media (min-width: 768px) {

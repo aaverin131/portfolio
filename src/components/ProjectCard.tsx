@@ -1,10 +1,19 @@
 import { useRef, useState } from "react"
 import type { Project } from "../data/projects"
+import ProjectLinks from "./ProjectLinks"
 
-export default function ProjectCard({ project }: { project: Project }) {
+type Props = {
+  project: Project
+  query?: string   // current filter ("?category=…"), carried to the project page so its back link returns to it
+}
+
+export default function ProjectCard({ project, query = "" }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [videoReady, setVideoReady] = useState(false)
   const hasVideo = Boolean(project.video)
+  // The project page earns a link when it shows something the card can't:
+  // written details, or a playable clip (hover never fires on phones).
+  const hasPage = Boolean(project.details || project.video)
 
   const handleEnter = () => {
     const v = videoRef.current
@@ -56,16 +65,12 @@ export default function ProjectCard({ project }: { project: Project }) {
             {project.tech.map((t) => <li key={t}>{t}</li>)}
           </ul>
           <div className="project-links">
-            {project.repo && (
-              <a className="project-link" href={project.repo} target="_blank" rel="noreferrer">
-                Code →
+            {hasPage && (
+              <a className="project-link" href={`/projects/${project.slug}${query}`}>
+                View more →
               </a>
             )}
-            {project.devpost && (
-              <a className="project-link" href={project.devpost} target="_blank" rel="noreferrer">
-                Devpost →
-              </a>
-            )}
+            <ProjectLinks project={project} />
           </div>
         </div>
       </div>

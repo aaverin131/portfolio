@@ -7,6 +7,8 @@ import About from "./components/About"
 import Projects from "./components/Projects"
 import Skills from "./components/Skills"
 import Contact from "./components/Contact"
+import ProjectsPage from "./pages/ProjectsPage"
+import ProjectDetailPage from "./pages/ProjectDetailPage"
 
 // Per-section vertical padding. Tweak here to control space between sections.
 const SECTION_PAD = {
@@ -15,6 +17,12 @@ const SECTION_PAD = {
   skills:   { top: "9rem", bottom: "6rem" },
   contact:  { top: "0rem", bottom: "6rem" },
 } as const
+
+// Routing. Every link is a normal page load, so reading the path once is enough:
+// "/"                         → page undefined                       → home
+// "/projects"                 → page "projects"                      → ProjectsPage
+// "/projects/window-slider/"  → page "projects", slug "window-slider" → ProjectDetailPage
+const [page, slug] = window.location.pathname.split("/").filter(Boolean)
 
 type Pad = { top: string; bottom: string }
 
@@ -32,6 +40,9 @@ function Spacer({ pad, children }: { pad: Pad; children: ReactNode }) {
 }
 
 export default function App() {
+  if (page === "projects" && slug) return <ProjectDetailPage slug={slug} />
+  if (page === "projects") return <ProjectsPage />
+
   return (
     <SmoothScroll>
       <Nav />
