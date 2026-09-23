@@ -11,7 +11,7 @@ export default function Projects() {
         <h2 className="section-heading">Projects</h2>
         <div className="project-grid">
           {featured.map((p) => <ProjectCard key={p.slug} project={p} />)}
-          <a className="project-more" href="/projects">
+          <a id="more-projects" className="project-more" href="/projects">
             <span>View more projects</span>
             <span className="project-more-arrow" aria-hidden="true">→</span>
           </a>

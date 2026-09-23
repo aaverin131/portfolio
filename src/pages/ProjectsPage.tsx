@@ -8,6 +8,7 @@ import {
   projects,
   type Category,
 } from "../data/projects"
+import { navigationType, scrollToHashTarget } from "../utils/scroll"
 
 // Filter buttons, in order. No value = All.
 const FILTERS: { value?: Category; label: string }[] = [
@@ -21,6 +22,8 @@ export default function ProjectsPage() {
 
   useEffect(() => {
     document.title = "Projects — Alexander Averin"
+    // Arrived from a project page's back link ("/projects#window-slider"): land on that card.
+    if (navigationType() === "navigate") scrollToHashTarget()
   }, [])
 
   const choose = (next?: Category) => {
@@ -33,7 +36,7 @@ export default function ProjectsPage() {
 
   return (
     <main className="section page">
-      <a className="page-back" href="/">← Home</a>
+      <a className="page-back" href="/#more-projects">← Home</a>
       <h1 className="section-heading">Projects</h1>
 
       <div className="project-filter" role="group" aria-label="Filter projects">

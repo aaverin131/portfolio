@@ -1,4 +1,5 @@
 import { useEffect, useState, type MouseEvent } from "react"
+import { navigationType, scrollToHashTarget } from "../utils/scroll"
 
 const LINKS = [
   { href: "#hero",    label: "top"    },
@@ -38,12 +39,17 @@ export default function Nav() {
   }, [])
 
   useEffect(() => {
-    // If a hash survived from a previous visit, start at the top on reload
-    // instead of teleporting to that section.
-    if (window.location.hash) {
+    if (!window.location.hash) return
+    const type = navigationType()
+    if (type === "reload") {
+      // A hash that survived a reload: start at the top instead of teleporting to that section.
       history.replaceState(null, "", window.location.pathname + window.location.search)
       window.scrollTo(0, 0)
+    } else if (type === "navigate") {
+      // Arrived through a link like "/#more-projects" (the Home link on /projects): go there.
+      scrollToHashTarget()
     }
+    // "back_forward": the browser restores the previous scroll position by itself.
   }, [])
 
   const handleNavClick = (e: MouseEvent<HTMLAnchorElement>, href: string) => {

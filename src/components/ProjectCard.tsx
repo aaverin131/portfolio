@@ -11,9 +11,6 @@ export default function ProjectCard({ project, query = "" }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [videoReady, setVideoReady] = useState(false)
   const hasVideo = Boolean(project.video)
-  // The project page earns a link when it shows something the card can't:
-  // written details, or a playable clip (hover never fires on phones).
-  const hasPage = Boolean(project.details || project.video)
 
   const handleEnter = () => {
     const v = videoRef.current
@@ -27,6 +24,7 @@ export default function ProjectCard({ project, query = "" }: Props) {
 
   return (
     <article
+      id={project.slug}   // lets the project page's back link land on this card
       className="project-card"
       onMouseEnter={hasVideo ? handleEnter : undefined}
       onMouseLeave={hasVideo ? handleLeave : undefined}
@@ -65,11 +63,9 @@ export default function ProjectCard({ project, query = "" }: Props) {
             {project.tech.map((t) => <li key={t}>{t}</li>)}
           </ul>
           <div className="project-links">
-            {hasPage && (
-              <a className="project-link" href={`/projects/${project.slug}${query}`}>
-                View more →
-              </a>
-            )}
+            <a className="project-link" href={`/projects/${project.slug}${query}`}>
+              View more →
+            </a>
             <ProjectLinks project={project} />
           </div>
         </div>

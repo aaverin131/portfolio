@@ -12,7 +12,13 @@ export type Project = {
   makerworld?: string
   category: Category   // required: which filter it belongs to
   featured?: boolean   // true = shows on the home grid
-  details?: { heading: string; text: string }[]   // extra sections on the project's own page
+  details?: Detail[]   // extra sections on the project's own page
+}
+
+export type Detail = {
+  heading: string
+  text: string   // "[label](https://…)" renders as an external link with an icon
+  images?: { src: string; alt: string }[]   // shown side by side under the text, as a collage
 }
 
 // Types disappear at runtime, so the categories live in a real array and the
@@ -45,7 +51,7 @@ export const projects: Project[] = [
     title: "Resume Refiner",
     blurb: "AI-powered resume optimizer. Hackathon top 10/44 — Built the Flask + Gemini backend.",
     tech: ["Python", "Flask", "React", "Gemini API", "Team of 4"],
-    poster: "/media/Resume Refiner thumbnail.png",
+    poster: "/media/resume-refiner/Resume Refiner thumbnail.png",
     repo: "https://github.com/GDSC-2025-Hackathon/Resume-Refiner",
     devpost: "https://devpost.com/software/resume-refiner",
   },
@@ -56,8 +62,8 @@ export const projects: Project[] = [
     title: "Number ↔ String Converter",
     blurb: "Bidirectional integer/word converter with a modular OOP backend.",
     tech: ["Python", "Flask", "JavaScript"],
-    poster: "/media/String Number converter thumbnail.png",
-    video: "/media/String Number converter demo.mp4",
+    poster: "/media/number-string-converter/String Number converter thumbnail.png",
+    video: "/media/number-string-converter/String Number converter demo.mp4",
     repo: "https://github.com/aaverin131/Python-Projects-Collection/tree/main/number-string-converter",
   },
   {
@@ -67,8 +73,8 @@ export const projects: Project[] = [
     title: "Grand Theft Stickman",
     blurb: "2D open-world game via Pygame engine — OOP architecture, 100+ custom assets, frame-rate-independent motion.",
     tech: ["Python", "Pygame", "pytest", "GitHub Actions"],
-    poster: "/media/GTS game thumbnail.png",
-    video: "/media/GTS game clip.mp4",
+    poster: "/media/grand-theft-stickman/GTS game thumbnail.png",
+    video: "/media/grand-theft-stickman/GTS game clip.mp4",
     repo: "https://github.com/aaverin131/Grand-Theft-Stickman",
   },
   {
@@ -77,8 +83,8 @@ export const projects: Project[] = [
     title: "Automatic Window Slider",
     blurb: "Opens and closes a window from a TV remote. An ESP32 reads the IR signal and drives a NEMA 17 stepper; I modelled the parts in Fusion 360 and printed them. Next: Wi-Fi control.",
     tech: ["ESP32", "NEMA 17", "IR", "Fusion 360", "3D Printing"],
-    poster: "/media/Window Slider thumbnail.jpg",
-    video: "/media/Window Slider demo.mp4",
+    poster: "/media/window-slider/Window Slider thumbnail.jpg",
+    video: "/media/window-slider/Window Slider demo.mp4",
   },
   {
     category: "embed-modelling",
@@ -86,6 +92,17 @@ export const projects: Project[] = [
     title: "Silver Robotics Logo",
     blurb: "My FRC team's logo (Team 9575) as a 3D print, with a CNC arm that moves the S up and down like it's building the letter. Modelled in Fusion 360.",
     tech: ["Fusion 360", "3D Printing"],
-    poster: "/media/Silver Robotics logo.png",
+    poster: "/media/silver-robotics-logo/Silver Robotics logo.png",
+    video: "/media/silver-robotics-logo/Logo demo.mp4",
+    details: [
+      {
+        heading: "The print run",
+        text: "I printed roughly 150 of these on my Bambu Lab P1S, with the AMS 2 Pro switching filaments for the colours. They went out as free team merch at the [2026 FIRST Ontario Provincial Championship](https://firstroboticscanada.org/frc/championship/).",
+        images: [
+          { src: "/media/silver-robotics-logo/Free logo givaway.jpg", alt: "A box of printed logos labelled 9575 MERCH and FREE" },
+          { src: "/media/silver-robotics-logo/Photogenic logo line-up.jpg", alt: "A row of printed Silver Robotics logos lined up on a desk" },
+        ],
+      },
+    ],
   },
 ]

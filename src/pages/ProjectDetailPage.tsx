@@ -1,4 +1,5 @@
 import { useEffect } from "react"
+import LinkedText from "../components/LinkedText"
 import ProjectLinks from "../components/ProjectLinks"
 import { categoryFromSearch, categoryQuery, projects } from "../data/projects"
 
@@ -23,7 +24,7 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
 
   return (
     <main className="section page">
-      <a className="page-back" href={backHref}>← Back to projects</a>
+      <a className="page-back" href={`${backHref}#${project.slug}`}>← Back to projects</a>
       <h1 className="section-heading">{project.title}</h1>
       <ul className="project-tech">
         {project.tech.map((t) => <li key={t}>{t}</li>)}
@@ -46,7 +47,14 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
       {project.details?.map((d) => (
         <section key={d.heading} className="project-detail">
           <h2 className="project-detail-heading">{d.heading}</h2>
-          <p className="section-body">{d.text}</p>
+          <p className="section-body"><LinkedText text={d.text} /></p>
+          {d.images && (
+            <div className="project-collage">
+              {d.images.map((img) => (
+                <img key={img.src} src={img.src} alt={img.alt} loading="lazy" />
+              ))}
+            </div>
+          )}
         </section>
       ))}
     </main>
