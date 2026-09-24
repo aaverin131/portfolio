@@ -84,7 +84,6 @@ export const projects: Project[] = [
     blurb: "Opens and closes a window from a TV remote. An ESP32 reads the IR signal and drives a NEMA 17 stepper; I modelled the parts in Fusion 360 and printed them. Next: Wi-Fi control.",
     tech: ["ESP32", "NEMA 17", "IR", "Fusion 360", "3D Printing"],
     poster: "/media/window-slider/Window Slider thumbnail.jpg",
-    video: "/media/window-slider/Window Slider demo.mp4",
   },
   {
     category: "embed-modelling",
