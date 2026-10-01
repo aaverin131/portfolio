@@ -2,7 +2,7 @@
 export type Project = {
   slug: string     // also the page URL: /projects/<slug>
   title: string
-  blurb: string
+  blurb: string    // "[label](https://…)" renders as an external link, same as Detail.text
   tech: string[]
   poster: string   // path to static image
   video?: string   // optional hover video
@@ -89,11 +89,22 @@ export const projects: Project[] = [
     category: "embed-modelling",
     slug: "silver-robotics-logo",
     title: "Silver Robotics Logo",
-    blurb: "My FRC team's logo (Team 9575) as a 3D print, with a CNC arm that moves the S up and down like it's building the letter. Modelled in Fusion 360.",
+    blurb: "My FRC team's logo ([Team 9575](https://www.instagram.com/frc_9575/)) as a 3D print. Modelled in Fusion 360.",
     tech: ["Fusion 360", "3D Printing"],
     poster: "/media/silver-robotics-logo/Silver Robotics logo.png",
     video: "/media/silver-robotics-logo/Logo demo.mp4",
+    makerworld: "https://makerworld.com/en/models/3356376-silver-robotics-9575-logo-toy-ams#profileId-3815424",
     details: [
+      {
+        heading: "Up close",
+        text: "The arm lifts the S out of SILVER and puts it back.",
+        images: [
+          { src: "/media/silver-robotics-logo/Logo front.jpg", alt: "The printed logo standing upright, with the S in place in SILVER" },
+          { src: "/media/silver-robotics-logo/Logo S lifted.jpg", alt: "The same logo with the arm raised, holding the S up out of SILVER" },
+          { src: "/media/silver-robotics-logo/Logo angled.jpg", alt: "The logo lying flat, seen from an angle to show the raised colour layers" },
+          { src: "/media/silver-robotics-logo/Logo back.jpg", alt: "The plain black back of the logo" },
+        ],
+      },
       {
         heading: "The print run",
         text: "I printed roughly 150 of these on my Bambu Lab P1S, with the AMS 2 Pro switching filaments for the colours. They went out as free team merch at the [2026 FIRST Ontario Provincial Championship](https://firstroboticscanada.org/frc/championship/).",

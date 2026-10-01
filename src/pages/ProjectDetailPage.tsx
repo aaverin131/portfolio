@@ -39,7 +39,7 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
         )}
       </div>
 
-      <p className="section-body">{project.blurb}</p>
+      <p className="section-body"><LinkedText text={project.blurb} /></p>
       <div className="project-links">
         <ProjectLinks project={project} />
       </div>

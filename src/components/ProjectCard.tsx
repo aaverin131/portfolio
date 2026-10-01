@@ -1,5 +1,6 @@
 import { useRef, useState } from "react"
 import type { Project } from "../data/projects"
+import LinkedText from "./LinkedText"
 import ProjectLinks from "./ProjectLinks"
 
 type Props = {
@@ -58,7 +59,7 @@ export default function ProjectCard({ project, query = "" }: Props) {
         </div>
         <div className="project-body">
           <h3 className="project-title">{project.title}</h3>
-          <p className="project-blurb">{project.blurb}</p>
+          <p className="project-blurb"><LinkedText text={project.blurb} /></p>
           <ul className="project-tech">
             {project.tech.map((t) => <li key={t}>{t}</li>)}
           </ul>

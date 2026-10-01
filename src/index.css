@@ -597,11 +597,10 @@ html.theme-dark {
   stroke-linejoin: round;
 }
 
-/* Photos under a details section: one row, equal squares, as wide as the text column. */
+/* Photos under a details section: equal squares, two per row, as wide as the text column. */
 .project-collage {
   display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 1fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: 0.75rem;
   max-width: 42rem;
   margin-top: 1.25rem;
